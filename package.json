@@ -1,0 +1,13 @@
+{
+  "name": "Swiat Ksiazki Automation by Cypres",
+  "version": "0.0.1",
+  "desription": "using cypress framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sebastian Bucki",
+  "devDependencies": {
+    "cypress": "^6.1.0"
+  }
+}
