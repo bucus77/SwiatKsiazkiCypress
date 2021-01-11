@@ -8,6 +8,6 @@
   },
   "author": "Sebastian Bucki",
   "devDependencies": {
-    "cypress": "^6.1.0"
+    "cypress": "^6.2.1"
   }
 }

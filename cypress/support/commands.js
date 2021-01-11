@@ -11,6 +11,13 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })
+Cypress.Commands.add("areElementsInList", (element, expected) => {
+    console.log(expected);
+    element.each(($el, index) => {
+        console.log($el.text())
+        expect(expected.includes($el.text()))
+    })
+});
 //
 //
 // -- This is a child command --

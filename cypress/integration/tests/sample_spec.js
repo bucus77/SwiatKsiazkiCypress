@@ -1,10 +1,16 @@
 /// <reference types="Cypress" />
-import HomePage from "../pageObjects/homePage";
-import Helper from "../helper/helper";
+import HomePage from "../../support/pageObjects/homePage";
 
-import commonLiterals from "../../fixtures/Literals/common/commonLiterals.td";
-
+let CommonLiterals = {};
 describe('Common Tests', () => {
+    before(function () {
+        // runs once before all tests in the block
+        cy.fixture('Literals/common/commonLiterals')
+            .then((commonLiterals) => {
+                cy.log(commonLiterals);
+                CommonLiterals = commonLiterals;
+            })
+    });
     it('Open site ', () => {
         cy.visit('https://www.swiatksiazki.pl/');
     });
@@ -12,17 +18,18 @@ describe('Common Tests', () => {
         cy.title().should('equal', 'Księgarnia internetowa swiatksiazki.pl z dostawą 0 zł do Księgarń Świat Książki');
     });
 
-    it('TEST2 ', () => {
+    it('TEST2 ', async () => {
         const homePage = new HomePage();
-        const helper = new Helper();
+        //const helper = new Helper();
         cy.wait(1000);
-        helper.areElementsInList(homePage.getLeftNavBarLinks(), Object.values(commonLiterals.leftNavigation))
+        cy.areElementsInList(await homePage.getLeftNavBarLinks(), Object.values(CommonLiterals.leftNavigation))
+
     });
 
-    it('TEST3 ', () => {
+    it('TEST3 ', async () => {
         const homePage = new HomePage();
-        const helper = new Helper();
+        //const helper = new Helper();
         cy.wait(1000);
-        helper.areElementsInList(homePage.getTopNav(), Object.values(commonLiterals.topNavigation))
+        cy.areElementsInList(await homePage.getTopNav(), Object.values(CommonLiterals.topNavigation))
     })
 });
